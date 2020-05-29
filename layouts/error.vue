@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <h1 v-if="error.statusCode === 404">
       {{ pageNotFound }}
     </h1>
@@ -12,9 +12,16 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  layout: 'empty',
+<script lang="ts">
+import Vue from "vue"
+
+const errorTexts = {
+  pageNotFound: "404 Not Found",
+  otherError: "An error occurred"
+}
+
+export default Vue.extend({
+  layout: "empty",
   props: {
     error: {
       type: Object,
@@ -22,19 +29,18 @@ export default {
     }
   },
   data() {
-    return {
-      pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
-    }
+    return errorTexts
   },
   head() {
     const title =
-      this.error.statusCode === 404 ? this.pageNotFound : this.otherError
+      this.error.statusCode === 404
+        ? errorTexts.pageNotFound
+        : errorTexts.otherError
     return {
-      title
+      title: `${title} - かりぴーかんぺ for MHXX`
     }
   }
-}
+})
 </script>
 
 <style scoped>
