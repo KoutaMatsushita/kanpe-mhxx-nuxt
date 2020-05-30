@@ -1,6 +1,6 @@
 # kanpe-mhxx-nuxt
 
-> My dazzling Nuxt.js project
+MHXX における狩猟笛のカンペ
 
 ## Build Setup
 
